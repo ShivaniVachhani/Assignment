@@ -1,0 +1,113 @@
+// import React, {useState} from "react";
+// import axios from 'axios';
+// function Check(){
+//     const [text, setText] = useState('');
+//     const [result, setResult] = useState([]);
+//     const [apiKey] = useState('AhfGVqeASKPyAOpd');
+//     const submit=async()=>{
+//         try {
+//             const response = await axios.post(
+//               'https://api.textgears.com/grammar',
+//               `text=${text}`,
+//               {
+//                 params: {
+//                   apiKey: apiKey,
+//                 }
+//               }
+//             );
+      
+//             setResult(response.data.matches);
+//           } catch (error) {
+//             console.error('Error', error);
+//           }
+//     }
+//     return(
+//     <div>
+//         <textarea
+//         rows="10"
+//         cols="100"
+//         value={text}
+//         onChange={(e) => setText(e.target.value)}
+//         placeholder="Enter text to check"/>
+//         <br></br>
+//         <button onClick={submit}>Submit</button>
+//         {result.length > 0 && (
+//         <div>
+//           <h3>Grammar Check Results:</h3>
+//           <ul>
+//             {result.map((result, index) => (
+//               <li key={index}>
+//                 {result.message} (from position {result.offset} to{' '}
+//                 {result.offset + result.length})
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       )}
+//     </div>
+//     )
+    
+// }
+// export default Check;
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+// import axios from 'axios';
+
+// const GrammarChecker = () => {
+//   const [text, setText] = useState('');
+//   const [suggestions, setSuggestions] = useState([]);
+//   const [apiKey] = useState('AhfGVqeASKPyAOpd'); // Replace with your TextGears API key
+//   const [loading, setLoading] = useState(false);
+
+//   const checkGrammar = async () => {
+//     setLoading(true);
+
+//     try {
+//       const response = await axios.get(
+//         `https://api.textgears.com/check.php?text=${text}&key=${apiKey}`
+//       );
+
+//       if (response.data.result) {
+//         setSuggestions(response.data.result.errors);
+//       } else {
+//         setSuggestions([]);
+//       }
+//     } catch (error) {
+//       console.error('Error checking grammar:', error);
+//       setSuggestions([]); // Clear any previous suggestions
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <textarea
+//         rows="10"
+//         cols="100"
+//         placeholder="Enter text here..."
+//         value={text}
+//         onChange={(e) => setText(e.target.value)}
+//       />
+//       <br></br>
+//       <button onClick={checkGrammar} disabled={loading}>
+//         {loading ? 'Checking...' : 'Check Grammar'}
+//       </button>
+//       {suggestions && Array.isArray(suggestions) && suggestions.length > 0 ? (
+//         <ul>
+//           {suggestions.map((error, index) => (
+//             <li key={index}>{error.better}</li>
+//           ))}
+//         </ul>
+//       ) : null}
+//     </div>
+//   );
+// };
+
+// export default GrammarChecker;
